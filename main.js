@@ -1,10 +1,23 @@
-let todo = "";
-const ulTag = document.querySelector("ul");
+const todoForm = document.querySelector("#todo");
+const todoInput = document.querySelector("#todoField");
+const todoList = document.querySelector("ul");
+let todoItems = [];
 
-document.querySelector('#todo').addEventListener("submit", function(event) {
+todoForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    todo = document.querySelector("#todoField").value;
-    let template = todo.map(item => `
-    <li>${todo}</li>`);
-    ulTag.innerHTML = template.join();
+    const todo = todoInput.value;
+    if (todoItems.length >= 0) {
+        todoItems.push(todo);
+    }
+    todoInput.value = '';
+    renderTodoList();
 })
+
+function renderTodoList() {
+    const template = todoItems.map(item => `
+    <ul>
+    <p>${item}</p>
+    </ul>
+    `);
+    todoList.innerHTML = template.join('');
+}
