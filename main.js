@@ -16,8 +16,7 @@ todoForm.addEventListener('submit', function(event) {
 function renderTodoList() {
     const template = todoItems.map(item => `
     <ul>
-    <li>
-    <p>${item}</p>
+    <li>${item}
     </li></ul>
     `);
     todoList.innerHTML = template.join('');
